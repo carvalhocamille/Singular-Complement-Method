@@ -1,0 +1,371 @@
+\documentclass[11pt]{article}
+%\documentclass[11pt]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[english,frenchb]{babel} 
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{fourier}
+%\usepackage{changepage}
+%\usepackage{kpfonts} % \usepackage{lmodern} \usepackage{fourier}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage{amsthm} 
+\usepackage{mathtools}
+\usepackage{mathrsfs} 
+\usepackage{tabularx}
+\usepackage{yfonts}
+\usepackage{enumerate} 
+\usepackage{tikz}
+\usepackage{bbold}
+%\usepackage[labelformat=simple, labelsep=endash, font=normalsize, labelformat=simple]{subcaption}
+%\usepackage{fancyhdr} % pour les tetes et pieds de page
+%\usepackage[Alien]{fncychap} % pour les titres de chapitre
+%\usepackage{titlesec} 
+%\usepackage{titletoc}
+\usepackage[a4paper]{geometry}
+\usepackage{stmaryrd} % pourles doubles braket
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+
+\usepackage{textcomp} % pour utiliser °
+\usepackage{gensymb}
+
+%\usepackage{lipsum} % bblabla test
+\usepackage{empheq} % numeroter chacune des equations dans un paquet
+
+\usepackage[pdfborder={0 0 0}]{hyperref}				% si tu compile avec PDFlaTeX les liens/toc/footnote... seront cliquables
+\usepackage{amsfonts} %permet de rajouter des caractères en maths dont les lettres en double barre
+\usepackage{graphicx} %m\'ethode pour ins\'erer des images version net
+\DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg,.JPG,.jpeg,.ps,.svg}
+%\graphicspath{{chapters/}{chapters/BoCaCi15_T_coerc_disc/figs/},{chapters/JCP/figs/},{chapters/JCP/img/},{chapters/guide_scalaire/figs/},{chapters/guide_scalaire/figs/figs_old/},{chapters/guide_scalaire/images/},{chapters/Maxwell/figs/},{chapters/intro_motiv/img/},{chapters/intro_motiv/figs/},{figs/}}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{blkarray}
+\usepackage{mathrsfs} %pour les lettres arrondies
+\usepackage{mathdots}% pour les matrices
+\usepackage{minitoc}
+\usepackage{appendix}
+\newcommand{\orange}[1]{\textcolor{orange}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{cancel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{subfig} %pour faire des sous-figure
+%\usepackage[numbers]{natbib}
+%\usepackage[T1]{fontenc}
+\DeclareTextSymbol{\degre}{T1}{6}
+%\usepackage{ textcomp }
+%=================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% PARAMETRES DIVERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% COMMANDES PERSO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\renewcommand{\l}{\left\langle}
+\renewcommand{\r}{\right\rangle}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\mf}{\mathbf}
+
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\supp}{\mathrm{supp}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Nabla}{\boldsymbol \nabla}
+%\newcommand{\diff}{\,\mathrm{d}}
+
+\newcommand{\ddiff}[2]{\displaystyle \frac{\partial {#1}}{\partial {#2}}}
+\newcommand\todo[1]{\textcolor{red}{#1}}
+\newcommand\verif[1]{\textcolor{blue}{A VERIFIER: #1}}
+\newcommand\ftr[1]{\footnote{\textcolor{red}{#1}}}
+\newcommand\ft[1]{\footnote{#1}}
+\newcommand{\out}{\mrm{out}}
+\newcommand{\ing}{\mrm{in}}
+\newcommand{\Cplx}{\mathbb{C}}
+\newcommand{\bfc}{\mathbf{c}}
+\newcommand{\bfk}{\mathbf{k}}
+\def\Lrond{\mathscr{L}}
+\def\mrm{\mathrm}
+\newcommand{\Frac}{\displaystyle\frac}
+\newcommand{\drond}{\partial}
+\newcommand{\coker}{\mathrm{coker }}
+\renewcommand{\div}{\mrm{div}}
+\newcommand{\curl}{{\text{curl }}} 
+% Les ensembles de nombres
+\newcommand{\eR}{\mathbb{R}}
+\newcommand{\eC}{\mathbb{C}}
+% pour la T coercivite
+%pour les contrastes
+\newcommand{\ke}{\kappa_{\eps}} 
+\newcommand{\contrast}{\kappa_{\eps} = \displaystyle{\frac{\eps_1}{\eps_2}}} 
+\newcommand{\oO}{\theta} 
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\tT}{\mathtt{T}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfE}{\mathbf{E}}
+\newcommand{\bfH}{\mathbf{H}}
+\newcommand{\ubf}[1]{\underline{\mathbf{#1}}}
+\renewcommand{\bf}[1]{{\mathbf{#1}}}
+\newcommand{\bs}[1]{{\boldsymbol{#1}}}
+\newcommand{\bra}{\langle}
+\newcommand{\ket}{\rangle}
+%\newcommand{\Rot}{\mathbf{rot }~}
+%\newcommand{\diver}{\mbox{div}}
+\newcommand{\chge}{}
+\newcommand{\Om}{\Omega}
+\newcommand{\plas}{\text{sp} }
+
+\newcommand{\e}[1]
+{\eps_#1} 
+\newcommand{\grad}{\nabla}
+\newcommand{\inv}{^{-1}}
+
+\newcommand{\ks}{\kappa_\sigma}
+\newcommand{\di}{\mathrm{d}}
+\newcommand{\me}{\mathrm{m}}
+
+\newcommand{\image}[3]  %Macro pour ins\'erer des images centr\'ees        %
+{\begin{figure}[H]                                               %
+	\begin{center}                                                     %
+	\includegraphics[width=#3\columnwidth]{#1}                         %
+	\caption{#2} \label{#1}                                        %
+	\end{center}                                                       %
+	\end{figure}                                                       %
+}     
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\re}[1]
+{\textcolor{red}{#1}}
+\newcommand{\egaldef}{\stackrel{\text{def}}{=}} 
+\newcommand{\pt}{{\textup{pt}}}
+%\newcommand{\drond}{\partial}
+%\DeclareMathOperator{\grad}{\nabla}
+\DeclareMathOperator{\diver}{{\mathrm{div}}} 
+\DeclareMathOperator{\rot}{ \mathrm{{rot}} } 
+%\newcommand{\rotv}{ \vect{\mathrm{{rot }}} } 
+\DeclareMathOperator{\rotv}{ \vect{\mathrm{{rot}}} } 
+%\newcommand{\Rot}{\mathbf{{rot }} } 
+\DeclareMathOperator{\Rot}{\mathbf{{rot}} } 
+\newcommand{\eT}{\mathbb{T}}
+\newcommand{\mZero}{\setminus \lbrace 0 \rbrace}
+\newcommand{\mUn}{\setminus \lbrace -1 \rbrace}
+\newcommand{\mPi}{\setminus \lbrace \pi\rbrace}
+%\newcommand{\vect}[1]{\overrightarrow{#1}}
+
+\newcommand{\BB}[1]{\begin{equation}  \label{#1} \begin{aligned}}
+\newcommand{\EE}{ \end{aligned} \end{equation}}
+
+\newcommand{\BBl}[1]
+{
+\begin{equation} \label{#1}
+\left|
+ \begin{aligned}
+ }
+ 
+\newcommand{\EEl}{
+ \end{aligned} 
+ \right. 
+ \end{equation}
+ }
+ 
+ \newcommand{\ald}{\[ \begin{aligned}}
+   \newcommand{\alf}{ \end{aligned} \]}
+%   \newcommand{\dsp}{\displaystyle}
+%\newcommand{\eps}{\varepsilon}
+\newcommand{\om}{\omega}
+%\newcommand{\Om}{\Omega}
+%\newcommand{\out}{\mrm{out}}
+\newcommand{\inc}{\mrm{in}}
+%\newcommand{\Cplx}{\mathbb{C}}
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\bfx}{\mathbf{x}}
+%\newcommand{\bfc}{\mathbf{c}}
+%\newcommand{\bfk}{\mathbf{k}}
+%\newcommand{\me}{\text{m}} 
+%\newcommand{\di}{\text{d}} 
+\newcommand{\diff}[2]
+{
+\displaystyle{\frac{\partial #1}{\partial #2}}
+}       
+\newcommand{\bl}[1]{\textit{\textcolor{blue}{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THEOREMES/DEFINITIONS/ETC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{rmk}{Remarque}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% DEBUT DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\endofdump
+%\tracingall
+\begin{document}
+\selectlanguage{english}
+%\mtcselectlanguage{french} % titre des minitoc en français
+%\frontmatter
+
+\title{Another expression of the singularity coefficient for a constant right hand side}
+\maketitle
+
+We consider the following problem (see CC18 for all details)
+
+\begin{equation}\label{eq:toypb}
+\left|
+\begin{aligned}
+&\text{Find } u = u_r + b \zeta s, \, b \in \mathbb{C}, \, u_r \in H^1(D_\rho), \, \zeta \in \mathcal{C}^\infty ([0,1],D_\rho), \, s \not \in  H^1(D_\rho), \text{ s.t.:} \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla u \right) + {k_0^2} \mu  u = 0 \quad \text{in } D_\rho \\
+& u = f \quad \text{on } \partial D_\rho \\
+\end{aligned}
+\right.
+\end{equation}
+We define the singular complement $z$ as the solution to the homogeneous problem 
+\begin{equation}\label{eq:hmgpb}
+\left|
+\begin{aligned}
+& \mbox{Find } z = \zeta  \left( s^\ast + c\, s\right)  + \tilde{z}, \, c \in \mathbb{C}, \, \tilde{z}\in H^1(D_\rho) \mbox{ such that:}\\
+&\displaystyle\mathrm{div}\left(\varepsilon^{-1}\nabla z \right) + {k_0^2} \mu  z = 0 \quad \text{in } D_\rho  \qquad .\\
+& z = 0 \quad \text{on } \partial D_\rho \\
+\end{aligned}
+\right.
+\end{equation}
+Defining $w:= c \zeta s + \tilde{z}$, solving Problem \eqref{eq:hmgpb} is equivalent to solving:
+\begin{equation}\label{eq:newpb}
+\left|
+\begin{aligned}
+& \mbox{Find } w \mbox{ such that:} \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla w \right) + {k_0^2} \mu  w =  - \text{div}(\varepsilon^{-1} \nabla (\zeta  s^\ast ))  - k^2_0 \mu\, \zeta s^\ast \quad \text{in } D_\rho \\
+& w = 0 \quad \text{on } \partial D_\rho \\
+\end{aligned}
+\right.
+.
+\end{equation}
+Using the singular complement $z$, one can show after integration by parts on a perforated domain at the corner (and taking the limit) that the singularity coefficient admits the expression
+\begin{equation}\label{eq:coeff_b}
+b =- \displaystyle   \frac{\displaystyle  \int_{\partial D_\rho} \varepsilon^{-1}  f \partial_r \tilde{z}\, d\sigma}{2  \lambda \displaystyle \int_{-\pi}^{\pi} \varepsilon^{-1} \Phi^2\, d\theta}.
+\end{equation}
+
+The goal of these notes is to derive another formula in the specific case where $f$ is constant. The reasons are two-fold: it is a simple case to test and formulas can be simplified, this can avoid to compute a normal derivative numerically to compute \eqref{eq:coeff_b}. \\
+
+ 
+\section{Lift the solution and new expression}
+First let us define $\tilde{f} \in H^1(D_\rho)$, the continuous extension of $f$ over the domain $D_\rho$: for example consider $\tilde{f}  = cst = f$ in $D_\rho$ for constant right-hand side. Then we solve \eqref{eq:toypb} for the lifted solution $u_l = u - \tilde{f} \in H^1_0(D_\rho)$:
+\begin{equation}\label{eq:liftpb}
+\left|
+\begin{aligned}
+&\text{Find } u_l = u -\tilde{f}, \text{ s.t.:} \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla u_l \right) + {k_0^2} \mu  u_l = - {k_0^2} \mu  \tilde{f} \quad \text{in } D_\rho \\
+& u_l = 0 \quad \text{on } \partial D_\rho \\
+\end{aligned}
+\right.
+\end{equation}
+Above we have used the fact that $\text{div}\left(\varepsilon^{-1}\nabla \tilde{f} \right) = 0$.
+
+Considering $ 0 < \delta < \rho$,  using Problems \eqref{eq:hmgpb}-\eqref{eq:liftpb} we have 
+\[\displaystyle - \int_{D_{\rho} \setminus \overline{D_\delta}} \varepsilon^{-1} \nabla u_l \cdot {\nabla z} \, + k_0^2 \int_{D_{\rho}\setminus \overline{D_\delta}} \mu  u_l  \,{z} + \int_{\partial D_\delta}  \varepsilon^{-1} \partial_n u_l \, z = - k^2_0\displaystyle  \int_{D_{\rho}\setminus \overline{D_\delta}} \mu \tilde{f}  \, z \,
+\]
+and
+\[\displaystyle - \int_{D_{\rho} \setminus \overline{D_\delta}} \varepsilon^{-1} \nabla z \cdot {\nabla u_l} \, + k_0^2 \int_{D_{\rho}\setminus \overline{D_\delta}} \mu  z  \,{u_l} + \int_{\partial D_\delta}  \varepsilon^{-1} \partial_n z \, u_l =0,
+\]
+leading to
+\begin{equation}
+\int_{\partial D_\delta}  \varepsilon^{-1} \partial_n u_l \, z -  \int_{\partial D_\delta}  \varepsilon^{-1} \partial_n z \, u_l = - k^2_0\displaystyle  \int_{D_{\rho}\setminus \overline{D_\delta}} \mu \tilde{f}  \, z \,
+\end{equation}
+Using the fact that
+\begin{equation}\label{calculusCoef2}
+\lim \limits_{\delta \to 0} \displaystyle   \int_{ \partial D_\delta} \varepsilon^{-1} \left( \partial_r u_l \,z- \partial_r z\,u_l \right)\, d\sigma =2  b  \, \lambda \displaystyle \int_{-\pi}^{\pi} \varepsilon^{-1} \Phi^2\, d\theta 
+\end{equation}
+We obtain the alternate expression of $b$:
+\begin{equation}\label{eq:coeff_b_bis}
+b =- k_0^2\displaystyle   \frac{\displaystyle  \int_{D_\rho} \mu \tilde{f} {z}}{2  \lambda \displaystyle \int_{-\pi}^{\pi} \varepsilon^{-1} \Phi^2\, d\theta}.
+\end{equation}
+for which there is no normal derivative to approximate. Contrary to \eqref{eq:coeff_b} we will need the full knowledge of $z$ for that coefficient. \\
+
+For numerical tests with a constant right-hand side we will use formula \eqref{eq:coeff_b_bis}. Note that if we have a smooth data (meaning for any non constant chosen extension $\tilde{f} \in H^1_0(D_\rho)$), one can use the same method leading to the following expression:
+
+\begin{equation}\label{eq:coeff_b_ter}
+b =\displaystyle   \frac{\displaystyle  \int_{D_\rho} \varepsilon^{-1}  \grad \tilde{f} \cdot \grad {z}\, - k_0^2\displaystyle  \int_{D_\rho} \mu \tilde{f} {z}\,}{2  \lambda \displaystyle \int_{-\pi}^{\pi} \varepsilon^{-1} \Phi^2\, d\theta},
+\end{equation}
+
+where we used the fact that $\dsp \displaystyle  \int_{D_\rho}  \diver (\varepsilon^{-1}  \grad \tilde{f} ) {z} = - \displaystyle  \int_{D_\rho} \varepsilon^{-1}  \grad \tilde{f} \cdot \grad {z}\, + \int_{\partial D_\rho} \varepsilon^{-1} \partial_r \tilde{f} z$, and $z =0$ on $\partial D_\rho$. In that case the right-hand side in \eqref{eq:liftpb} is slightly modified as well.
+\section{Variational formulation for the regular part}
+
+Once $b$ is computed, one can solve the problem only for the regular part $u_{l,r} = u_r - \tilde{f} = u_l - b \zeta s $:
+
+\begin{equation}\label{eq:liftpbreg}
+\left|
+\begin{aligned}
+&\text{Find } u_{l,r} \text{ s.t.:} \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla u_{l,r}  \right) + {k_0^2} \mu  u_{l,r}  = - {k_0^2} \mu  \tilde{f} - b \displaystyle\text{div}\left(\varepsilon^{-1}\nabla (\zeta s)  \right) - b {k_0^2} \mu  \zeta s\quad \text{in } D_\rho \\
+& u_{l,r} = 0 \quad \text{on } \partial D_\rho \\
+\end{aligned}
+\right.
+\end{equation}
+Note that the right-hand side is still well defined. This leads to the following variational formulation
+\begin{equation}\label{FV_lift_reg_part}
+\left|
+\begin{aligned}
+&\text{Find } u_{l,r} \in H^1_0(D_\rho)\text{ s.t.:} \forall v' \in H^1_0(D_\rho) \\
+&\displaystyle - \int_{D_\rho} \varepsilon^{-1}\nabla u_{l,r} \cdot \overline{\grad v'} + {k_0^2}\int_{D_\rho}  \mu  u_{l,r}  \overline{v'}= \displaystyle - \int_{D_\rho}  {k_0^2} \mu  \tilde{f} \overline{v'} +b \displaystyle  \int_{D_\rho} \displaystyle \varepsilon^{-1}\nabla (\zeta s)  \cdot \overline{\nabla v'} - b {k_0^2} \displaystyle  \int_{D_\rho} \mu  \zeta s  \overline{v'}\\
+\end{aligned}
+\right.
+\end{equation}
+
+\textcolor{blue}{
+Using the expression of the cutt-off function we have (for $) < \delta < l < \rho$):
+\begin{equation}\label{eq:liftpbregbis}
+\left|
+\begin{aligned}
+&\text{Find } u_{l,r} \text{ s.t.:} \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla u_{l,r}  \right) + {k_0^2} \mu  u_{l,r}  = - {k_0^2} \mu  \tilde{f}  - b {k_0^2} \mu  s\quad \text{in } D_\delta \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla u_{l,r}  \right) + {k_0^2} \mu  u_{l,r}  = - {k_0^2} \mu  \tilde{f} - b \displaystyle\text{div}\left(\varepsilon^{-1}\nabla (\eta s)  \right) - b {k_0^2} \mu  \eta s\quad \text{in } D_{l,\delta} := D_l \setminus \overline{D_\delta} \\
+&\displaystyle\text{div}\left(\varepsilon^{-1}\nabla u_{l,r}  \right) + {k_0^2} \mu  u_{l,r}  = - {k_0^2} \mu  \tilde{f} \quad \text{in } D_\rho \\
+& u_{l,r} = 0 \quad \text{on } \partial D_\rho \\
+\end{aligned}
+\right.
+\end{equation}
+leading to the variational formulation
+\begin{equation}\label{FV_lift_reg_part_bis}
+\left|
+\begin{aligned}
+&\text{Find } u_{l,r} \in H^1_0(D_\rho)\text{ s.t.:} \forall v' \in H^1_0(D_\rho) \\
+&\displaystyle - \int_{D_\rho} \varepsilon^{-1}\nabla u_{l,r} \cdot \overline{\grad v'} + {k_0^2}\int_{D_\rho}  \mu  u_{l,r}  \overline{v'}= \displaystyle - \int_{D_\rho}  {k_0^2} \mu  \tilde{f} \overline{v'} - b \displaystyle  \int_{D_{l,\delta}} \displaystyle \diver(\varepsilon^{-1}\nabla (\zeta s) ) \overline{ v'} - b {k_0^2} \displaystyle  \int_{D_\rho} \mu  \zeta s  \overline{v'}\\
+&\Longleftrightarrow \\
+&\displaystyle - \int_{D_\rho} \varepsilon^{-1}\nabla u_{l,r} \cdot \overline{\grad v'} + {k_0^2}\int_{D_\rho}  \mu  u_{l,r}  \overline{v'}= \displaystyle - \int_{D_\rho}  {k_0^2} \mu  \tilde{f} \overline{v'}  + b \displaystyle  \int_{D_{l,\delta}} \displaystyle \varepsilon^{-1}\nabla (\zeta s) \cdot \overline{\nabla v'}  \\
+&+ b \int_{\partial D_\delta} \varepsilon^{-1} \partial_r s \overline{v'}- b {k_0^2} \displaystyle  \int_{D_\rho} \mu  \zeta s  \overline{v'}\\
+\end{aligned}
+\right.
+\end{equation}
+}
+\section{Numerical method}
+Based on CC18 we discretize terms differently depending on the the parts (singular or regular) involved. For \eqref{FV_lift_reg_part}, the left-hand side and the first term on the right-hand side are discretized with standard FEM, and the last tow terms in the right-hand side are discretized using Newton-Cotes quadrature rules. With the CC18 notations we have
+\[ \left(- \mathbb{K}_\varepsilon + k^2_0 \mathbb{M}_\mu \right) U =  - k^2_0 \mathbb{M}_\mu F - b (\mathbb{A}_0 + \mathbb{B}_0)S \]
+
+%We define the bilinear form
+%$\beta(X,Y) := \displaystyle - \int_{D_{\rho}} \varepsilon^{-1} \nabla X \cdot \overline{\nabla Y} \, + k_0^2 \int_{D_{\rho}} \mu  X  \,%\overline{Y} , \quad\forall X,Y$.
+\end{document}
+
