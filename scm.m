@@ -56,7 +56,7 @@ fprintf('Parameter : kappa_epsilon =  %d \n',kappa_epsilon);
 % =====================================================
 %% 2) Read mesh
 % =====================================================
-mesh = 'disk.msh';
+mesh = 'mesh/disk.msh';
 [Nbpt,Nbtri,Coorneu,Refneu,Numtri,Reftri,Nbaretes,Numaretes,Refaretes] = lecture_msh_P2(mesh);
 Numtri2 = isop2(Numtri);
 
