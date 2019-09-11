@@ -1,4 +1,4 @@
-function [KK,MM,SS,SSm]=matrix_assembly(Coorneu,Numtri,Reftri,Numaretes,Refarete,Nbaretes,epsilonr_dielec,epsilonr_metal,mur_dielec,mur_metal,kw)
+function [KK,MM,SS,SSm]=matrix_assembly(Coorneu,Numtri,Reftri,Numaretes,Refarete,Nbaretes,epsilonr_dielec,epsilonr_metal,mur_dielec,mur_metal)
 % Compute P2 FE matrices using 3points Hammer-Stroud quadrature (STROUD p. 307)
 
 %Formula with 6 points, second order, the points being the DOF for
@@ -52,11 +52,11 @@ for t=1:nt %loop over triangles
         pk=pds_quadT(k)*abs(delta);
         
         if Reftri(t)==3 || Reftri(t)==4  || Reftri(t)==5 
-            Mt=Mt -kw^2 * mur_metal *pk*(w'*w);
+            Mt=Mt - mur_metal *pk*(w'*w);
             jg=Jflmt*gw;
             Kt=Kt+(1./epsilonr_metal)*pk*(jg'*jg);
         else
-            Mt=Mt -kw^2* mur_dielec *pk*(w'*w);
+            Mt=Mt -mur_dielec *pk*(w'*w);
             jg=Jflmt*gw;
             Kt=Kt+(1./epsilonr_dielec)*pk*(jg'*jg);
         end
@@ -78,40 +78,40 @@ end
 %For the surface matrices
 for t=1:Nbaretes
     
-    I=Numaretes(t,1);J=Numaretes(t,2);K=Numaretes(t,3);
-    L=norm(Coorneu(I,:)-Coorneu(J,:)); %length
-    
-    for k=1:nbq                   %  quadrature 1D
-        x=pts_quadS(k);
-        c=L*pds_quadS(k);
-        if(q==3)                     %P1
-            w=[1-x x];
-            St=c*w'*w;
-            in=[I J];
-        else                         %P2
-            w=[((1-2*x)*(1-x)) ((2*x-1)*x) (4*x*(1-x))];
-            St=c*w'*w;
-            in=[I J K];
-        end
-        
-        if Refarete(t)==1
-            St = St *(1./epsilonr_metal);
-            Stm = St * mur_metal;
-        else
-            St = St *(1./epsilonr_dielec);
-            Stm = St * mur_dielec;
-        end
-        
-        %assembly
-        p=size(in,2);
-        for i=1:p
-            for j=1:p
-                SS(in(i),in(j))=SS(in(i),in(j))+St(i,j);
-                SSm(in(i),in(j))=SSm(in(i),in(j))+Stm(i,j);
-            end
-        end
-    end
-end
+        I=Numaretes(t,1);J=Numaretes(t,2);K=Numaretes(t,3);
+        L=norm(Coorneu(I,:)-Coorneu(J,:)); %length
+
+            for k=1:nbq                   %  quadrature 1D
+                x=pts_quadS(k);                 
+                c=L*pds_quadS(k);
+                if(q==3)                     %P1
+                    w=[1-x x];                  
+                    St=c*w'*w;
+                    in=[I J];
+                else                         %P2
+                    w=[((1-2*x)*(1-x)) ((2*x-1)*x) (4*x*(1-x))];  
+                    St=c*w'*w;
+                    in=[I J K];
+                end 
+                
+                if Refarete(t)==1
+                    St = St *(1./epsilonr_metal);
+                    Stm = St * mur_metal;
+                else
+                    St = St *(1./epsilonr_dielec);
+                    Stm = St * mur_dielec;
+                end
+                
+                %assembly
+                p=size(in,2);
+                for i=1:p
+                    for j=1:p
+                        SS(in(i),in(j))=SS(in(i),in(j))+St(i,j);
+                        SSm(in(i),in(j))=SSm(in(i),in(j))+Stm(i,j);
+                    end
+                end
+            end       
+end 
 
 
 

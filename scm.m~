@@ -44,8 +44,6 @@ epsilonM = -0.83;                    %M for Metamaterial
 muP = 1;                   
 muM = 1; 
 angle= pi/6;                         %angle of the domain
-%We chose for the singularity:
-RacineR = 1.322404244;               %Singular exponant value 
 kw = 3;                              %wavenumber
 kappa_epsilon  = epsilonM/ epsilonP; %ratio of permittivities
 kappa_mu  = muM/ muP;                %ration of permeabilities
@@ -182,7 +180,7 @@ inter  = find(ismember(interior,origin)==0);
 interior1 = interior(inter);
 
 %Create coupling terms with NCQ
-[BdS,BdSb] = NCQ(Coorneu,Numtri,Reftri,div_s_grad_sh,Zsinguh_b,div_s_grad_sh_b,Zsinguh_b,muM,muP,kw);
+[BdS,BdSb] = NCQ(Coorneu,Numtri,Reftri,div_s_grad_sh,Zsinguh_b,div_s_grad_sh_b,Zsinguh_b,muM,muP);
 
 %Create system to solve to find the dual singularity
 AA1(1:end,1:end-1)= -KK(interior,interior1)+MM(interior,interior1);    %Matrix for regular part of the dual singularity, z_h
@@ -211,7 +209,7 @@ shading interp;grid off; axis 'equal'; colorbar;
 % =====================================================
 %% 6) Compute the singularity coefficient (b)
 % =====================================================
- [rhs,~] = NCQ(Coorneu,Numtri,Reftri,Dual_singularity,zeros(Nbpt,1),zeros(Nbpt,1),zeros(Nbpt,1),muM,muP,kw);
+ [rhs,~] = NCQ(Coorneu,Numtri,Reftri,Dual_singularity,zeros(Nbpt,1),zeros(Nbpt,1),zeros(Nbpt,1),muM,muP);
  Nsteps =100;
  value = 0;
  for k=1:Nsteps

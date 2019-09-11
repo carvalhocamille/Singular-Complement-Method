@@ -1,9 +1,13 @@
-function [Beta_s,div_s_grad_s, s_grad_s1,Zsingu,sPhi,Phi] = singular_expression_radial(eta, etap, etapp, Racine,phi,sigma_m,sigma_d)
-% Compute the radial componants o
-%
-%
-%
-%
+function [Beta_s,div_s_grad_s, s_grad_s1,Zsingu,sPhi,Phi] = singular_expression(eta, etap, etapp, Racine,phi,sigma_m,sigma_d)
+% Compute all analytical terms:
+% beta(zeta s zeta s)
+% div(sigma grad(s))
+% components of grad(s)
+% the singularity multilplied by the cutoff function: Zsingu  = eta * r^lambda * Phi
+% the weighted orthordial component of s: sigma * Phi
+% the orthordial component of s: Phi
+
+%1)Comp
 div_s_grad_r  = @(r) (r*(1 + 2 * 1i * Racine) .* etap(r) + r.^2 .* etapp(r) - 2 * Racine^2 * eta(r)) .* r.^(1i * Racine -2);
 grad_r = @(r) (r.* etap(r) + 1i * Racine * eta(r)) .* r.^(1i * Racine -1);
 grad_t = @(r) eta(r) .* r.^(1i * Racine -1);
