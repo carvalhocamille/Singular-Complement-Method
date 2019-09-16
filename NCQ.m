@@ -1,4 +1,4 @@
-function [M1,M2] =NCQ(Coorneu,Numtri,Reftri,Gd,G,Gds,Gs,mur_metal,mur_dielec,kw)
+function [M1,M2] =NCQ(Coorneu,Numtri,Reftri,Gd,G,Gdb,Gb,mur_metal,mur_dielec)
 % Compute the Newton-Cotes Quadrature (NCQ) over triangles.
 % The weights and nodes for second order NCQ can be found in "Symmetric
 % Quadrature Formulae for Simplexes", P. Silvester
@@ -42,12 +42,12 @@ for t=1:nt %loop over triangles
         
         pk=weights_closed(k)*abs(delta); % weight by delta in physical domain
         
-        if (Reftri(t)==3 || Reftri(t)==4  || Reftri(t)==5)
-            Mt1= Mt1 +  pk * w' * ( Gd(Numtri(t,k)) + kw^2 * mur_metal * G(Numtri(t,k)) );  
-            Mt2= Mt2 +  pk * w' * ( Gds(Numtri(t,k)) + kw^2 * mur_metal * Gs(Numtri(t,k)) );
+        if (Reftri(t)==3 || Reftri(t)==4  || Reftri(t)==5) %ref from .msh for negative material part
+            Mt1= Mt1 +  pk * w' * ( Gd(Numtri(t,k))  + mur_metal * G(Numtri(t,k)) );  
+            Mt2= Mt2 +  pk * w' * ( Gdb(Numtri(t,k)) + mur_metal * Gb(Numtri(t,k)) );
         else
-            Mt1= Mt1 + pk * w' * ( Gd(Numtri(t,k)) + kw^2 * mur_dielec * G(Numtri(t,k)) );
-            Mt2= Mt2 + pk * w' * ( Gds(Numtri(t,k))+ kw^2 * mur_dielec * Gs(Numtri(t,k)) );
+            Mt1= Mt1 + pk * w' * ( Gd(Numtri(t,k)) + mur_dielec * G(Numtri(t,k)) );
+            Mt2= Mt2 + pk * w' * ( Gdb(Numtri(t,k))+ mur_dielec * Gb(Numtri(t,k)) );
             
         end
         

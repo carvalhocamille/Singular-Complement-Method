@@ -1,4 +1,4 @@
-function [KK,MM,SS,SSm]=matrix_assembly(Coorneu,Numtri,Reftri,Numaretes,Refarete,Nbaretes,epsilonr_dielec,epsilonr_metal,mur_dielec,mur_metal,kw)
+function [KK,MM,SS,SSm]=matrix_assembly(Coorneu,Numtri,Reftri,Numaretes,Refarete,Nbaretes,epsilonr_dielec,epsilonr_metal,mur_dielec,mur_metal)
 % Compute P2 FE matrices using 3points Hammer-Stroud quadrature (STROUD p. 307)
 
 %Formula with 6 points, second order, the points being the DOF for
@@ -52,11 +52,11 @@ for t=1:nt %loop over triangles
         pk=pds_quadT(k)*abs(delta);
         
         if Reftri(t)==3 || Reftri(t)==4  || Reftri(t)==5 
-            Mt=Mt -kw^2 * mur_metal *pk*(w'*w);
+            Mt=Mt + mur_metal *pk*(w'*w);
             jg=Jflmt*gw;
             Kt=Kt+(1./epsilonr_metal)*pk*(jg'*jg);
         else
-            Mt=Mt -kw^2* mur_dielec *pk*(w'*w);
+            Mt=Mt + mur_dielec *pk*(w'*w);
             jg=Jflmt*gw;
             Kt=Kt+(1./epsilonr_dielec)*pk*(jg'*jg);
         end

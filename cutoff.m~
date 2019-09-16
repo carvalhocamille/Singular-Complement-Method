@@ -1,5 +1,5 @@
 % cut-off function
-function [eta, etap, etapp] = cutoff(delta, l)
+%function [eta, etap, etapp] = cutoff(delta, l, h)
 % Function that computes the cutoff function, and derivatives for the given
 % configuration
 
@@ -12,10 +12,20 @@ function [eta, etap, etapp] = cutoff(delta, l)
 % OUtPUT etap, first derivative of eta
 % OUTPUT etapp, second derivative of eta
 
-c = 6;
-d = 0.6 * sqrt(2);
-a = c ./ (l * d);
-b = ((delta * c /l) + 2) ./ (d);
+ delta = 0.1;
+ l = 0.9;
+ h = 0.001;
+ %x = [delta:h:l];
+xd = [0: h: delta];
+xr = [delta+h: h:l]; 
+xl = [l+h: h:1];
+
+xx = unique([xd xr xl]);
+%size(x)
+L  = length(xx);
+
+a = 5 ./ (l * 0.6 * sqrt(2));
+b = ((delta * 6 /l) + 2) ./ (0.6 * sqrt(2));
 
 % Create the continuous function that transitions from 1 to 0 and its
 % derivatives
@@ -24,20 +34,7 @@ etap  = @(x)  -a/ sqrt(pi) * exp ( - x.^2) ;
 etapp = @(x) - 2 * a^2 * x / sqrt(pi) .* exp(-x.^2) ;
 
 %% Display
-%delta = 0.1;
-%l = 0.9;
-%h = 0.001;
-%x = [delta:h:l];
-%xd = [0: h: delta];
-%xr = [delta+h: h:l]; 
-%xl = [l+h: h:1];
-%xx = unique([xd xr xl]);
-%size(x)
-%L  = length(xx);
-%  figure;
-%  plot(xx, eta(xx), '-xb')
-%  title('\eta(r)')
-%  eta(xx(1:10) )'
-%  eta(xx(end-10:end) )'
-end
+ figure;
+ plot(xx, eta(xx), '-xb')
+%end
 
