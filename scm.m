@@ -259,7 +259,7 @@ title('$ \Im \beta(\zeta {s}, w_h)$','Interpreter','latex')
 
 %% e) Compute the singularity coefficient
 fprintf('Start solving for dual singularity.....\n'); 
-ZZ1 = AA1\FF1;
+ZZ1 = AA1 \ FF1;
 ZZ = zeros(Nbpt,1);
 ZZ(interior1) = ZZ1(1:end-1);
 Dual_singularity =  ZZ1(end)* Zsinguh_b +Zsinguh_b + ZZ ; 
